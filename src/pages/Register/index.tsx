@@ -42,7 +42,7 @@ export function Register() {
               <option value="selecione" disabled hidden>
                 Selecione
               </option>
-              <option value="culto">Oferta Culto</option>
+              <option value="culto">OFERTAAAAAAAAAAAAAAAAAAAAAAAA </option>
               <option value="missoes">Oferta Missões</option>
               <option value="ebd">Oferta EBD</option>
               <option value="dizimo">Dízimo</option>
