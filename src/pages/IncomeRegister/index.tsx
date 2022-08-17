@@ -1,20 +1,22 @@
 import { FormContainer, RegisterContainer, SubmitButton } from './styles'
 import { useForm } from 'react-hook-form'
+import { format } from 'date-fns'
+// import NumberFormat from 'react-number-format'
 
 interface newIncomeForm {
-  selectTipo: string
+  selectType: string
   selectModel: string
-  transactionDate: Date
+  transactionDate: string
   personName?: string
   offerValue: number
 }
-
-export function Register() {
+export function IncomeRegister() {
   const { register, handleSubmit, watch, reset } = useForm<newIncomeForm>({
     defaultValues: {
-      selectTipo: 'selecione',
+      selectType: 'selecione',
       selectModel: 'selecione',
       personName: '',
+      transactionDate: format(new Date(), 'yyyy-MM-dd'),
     },
   })
 
@@ -23,12 +25,14 @@ export function Register() {
     reset()
   }
 
+  const isTypeDizimo = watch('selectType') === 'dizimo'
+
   const filledInputs =
-    watch('selectTipo') !== 'selecione' &&
+    watch('selectType') !== 'selecione' &&
     watch('selectModel') !== 'selecione' &&
     watch('transactionDate') &&
-    watch('personName') &&
     watch('offerValue')
+  // (isTypeDizimo === false ? watch('personName') : null)
 
   const isSubmitDisabled = !filledInputs
 
@@ -37,18 +41,36 @@ export function Register() {
       <form onSubmit={handleSubmit(handleSubmitInfo)} action="">
         <FormContainer>
           <div>
-            <label htmlFor="selectTipo">Tipo</label>
-            <select id="selectTipo" {...register('selectTipo')}>
+            <label htmlFor="transactionDate">Data</label>
+            <input
+              type="date"
+              id="transactionDate"
+              {...register('transactionDate')}
+            />
+          </div>
+          <div>
+            <label htmlFor="selectType">Tipo</label>
+            <select id="selectType" {...register('selectType')}>
               <option value="selecione" disabled hidden>
                 Selecione
               </option>
-              <option value="culto">OFERTAAAAAAAAAAAAAAAAAAAAAAAA </option>
+              <option value="culto">Oferta Culto </option>
               <option value="missoes">Oferta Missões</option>
               <option value="ebd">Oferta EBD</option>
               <option value="dizimo">Dízimo</option>
             </select>
           </div>
-
+          {isTypeDizimo && (
+            <div>
+              <label htmlFor="personName">Nome</label>
+              <input
+                type="text"
+                id="personName"
+                {...register('personName')}
+                placeholder="Paulo de Tarso"
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="selectModel">Modelo</label>
             <select id="selectModel" {...register('selectModel')}>
@@ -59,36 +81,25 @@ export function Register() {
               <option value="pix">Pix</option>
             </select>
           </div>
-
-          <div>
-            <label htmlFor="transactionDate">Data</label>
-            <input
-              type="date"
-              id="transactionDate"
-              {...register('transactionDate')}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="personName">Nome</label>
-            <input
-              type="text"
-              id="personName"
-              {...register('personName')}
-              placeholder="Digite seu nome aqui"
-            />
-          </div>
-
           <div>
             <label htmlFor="offerValue">Valor</label>
-            <input
+            {/* <input
               type="number"
               id="offerValue"
               {...register('offerValue')}
               min={0}
+              placeholder="R$0,00"
+            /> */}
+            {/* <NumberFormat
+              thousandSeparator={'.'}
+              decimalSeparator={','}
+              prefix={'R$'}
+              id="offerValue"
+              {...register('offerValue')}
+              min={0}
               step={1}
-              placeholder="R$0"
-            />
+              placeholder="R$0,00"
+            /> */}
           </div>
           <SubmitButton type="submit" disabled={isSubmitDisabled}>
             Enviar

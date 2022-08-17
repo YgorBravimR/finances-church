@@ -1,9 +1,7 @@
 // import { defineConfig } from 'vite'
 import styled from 'styled-components'
 
-export const RegisterContainer = styled.main`
-  padding: 4rem;
-`
+export const RegisterContainer = styled.main``
 
 export const FormContainer = styled.div`
   display: flex;
