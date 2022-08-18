@@ -1,3 +1,5 @@
+import img from '../assets/cross-background.jpg'
+
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
@@ -13,12 +15,21 @@ export const GlobalStyles = createGlobalStyle`
     }
 
   body {
-    background: ${(props) => props.theme['gray-900']};
-    color: ${(props) => props.theme['gray-300']};
+    background-image: url(${img});
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: ${(props) => props.theme['adnv-green-1']};
     font-size: 0.875rem;
     -webkit-font-smoothing: antialiased;
     margin: auto;
     max-width: 38rem;
+
+    label {
+    font-weight: bold;
+    font-size: 1.4rem;
+    font-family: 'Poppins', sans-serif;
+    }
   }
 
   body, input, textarea, button, select {

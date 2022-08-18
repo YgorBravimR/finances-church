@@ -1,6 +1,9 @@
 import { FormContainer, RegisterContainer, SubmitButton } from './styles'
 import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
+// import * as React from 'react'
+// import Select from '@mui/material/Select'
+// import { InputLabel, MenuItem } from '@mui/material'
 // import NumberFormat from 'react-number-format'
 
 interface newIncomeForm {
@@ -49,6 +52,17 @@ export function IncomeRegister() {
             />
           </div>
           <div>
+            {/* <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label="Age"
+              {...register('selectType')}
+            >
+              <MenuItem value="culto">Ten</MenuItem>
+              <MenuItem value="missoes">Twenty</MenuItem>
+              <MenuItem value="ebd">Thirty</MenuItem>
+            </Select> */}
             <label htmlFor="selectType">Tipo</label>
             <select id="selectType" {...register('selectType')}>
               <option value="selecione" disabled hidden>

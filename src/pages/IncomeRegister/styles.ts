@@ -8,11 +8,6 @@ export const FormContainer = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  & label {
-    font-size: 1.3rem;
-    font-family: 'Poppins', sans-serif;
-  }
-
   input,
   select {
     width: 100%;
