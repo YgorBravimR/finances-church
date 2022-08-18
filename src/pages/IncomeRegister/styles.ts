@@ -1,7 +1,7 @@
 // import { defineConfig } from 'vite'
 import styled from 'styled-components'
 
-export const RegisterContainer = styled.main``
+export const IncomeRegisterContainer = styled.main``
 
 export const FormContainer = styled.div`
   display: flex;

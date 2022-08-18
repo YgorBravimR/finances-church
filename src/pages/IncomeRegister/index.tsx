@@ -1,4 +1,4 @@
-import { FormContainer, RegisterContainer, SubmitButton } from './styles'
+import { FormContainer, IncomeRegisterContainer, SubmitButton } from './styles'
 import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 // import * as React from 'react'
@@ -40,7 +40,7 @@ export function IncomeRegister() {
   const isSubmitDisabled = !filledInputs
 
   return (
-    <RegisterContainer>
+    <IncomeRegisterContainer>
       <form onSubmit={handleSubmit(handleSubmitInfo)} action="">
         <FormContainer>
           <div>
@@ -120,6 +120,6 @@ export function IncomeRegister() {
           </SubmitButton>
         </FormContainer>
       </form>
-    </RegisterContainer>
+    </IncomeRegisterContainer>
   )
 }
