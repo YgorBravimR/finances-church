@@ -3,8 +3,6 @@ import styled from 'styled-components'
 export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
-<<<<<<< Updated upstream
-=======
   margin: 1.25rem 0;
   align-items: center;
   .homeAnchor {
@@ -55,5 +53,4 @@ export const RegisterPages = styled.div`
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
   }
->>>>>>> Stashed changes
 `

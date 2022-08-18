@@ -97,13 +97,13 @@ export function IncomeRegister() {
           </div>
           <div>
             <label htmlFor="offerValue">Valor</label>
-            {/* <input
+            <input
               type="number"
               id="offerValue"
               {...register('offerValue')}
               min={0}
               placeholder="R$0,00"
-            /> */}
+            />
             {/* <NumberFormat
               thousandSeparator={'.'}
               decimalSeparator={','}

@@ -67,4 +67,3 @@ export const MembersListContainer = styled.div`
     }
   }
 `
->>>>>>> Stashed changes

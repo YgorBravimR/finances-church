@@ -9,8 +9,8 @@ import { MemberRegister } from './pages/MemberRegister'
 export function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="/" element={<RegisterLayout />}>
+        <Route path="/" element={<Home />} />
         <Route path="/income" element={<IncomeRegister />} />
         <Route path="/expense" element={<ExpenseRegister />} />
         <Route path="/member" element={<MemberRegister />} />

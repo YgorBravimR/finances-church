@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-<<<<<<< Updated upstream
 export const ExpenseRegisterContainer = styled.div``
-=======
-export const RegisterContainer = styled.main``
 
 export const FormContainer = styled.div`
   display: flex;
@@ -34,4 +31,3 @@ export const SubmitButton = styled.button`
     color: ${(props) => props.theme['gray-500']};
   }
 `
->>>>>>> Stashed changes
