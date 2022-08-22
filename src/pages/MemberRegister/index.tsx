@@ -1,8 +1,14 @@
-import { FormContainer, RegisterContainer, SubmitButton } from './styles'
+import {
+  FormContainer,
+  MembersListContainer,
+  RegisterContainer,
+  SubmitButton,
+} from './styles'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 
 interface newMemberForm {
+  memberId: string
   memberName: string
   memberNumber?: number
 }
@@ -17,20 +23,30 @@ export function MemberRegister() {
   const [members, setMembers] = useState<newMemberForm[]>([])
 
   function handleCreateNewMember(data: newMemberForm) {
+    const id = String(new Date().getTime())
+
     const newMember: newMemberForm = {
       memberName: data.memberName,
       memberNumber: data.memberNumber,
+      memberId: id,
     }
 
     setMembers((state) => [...state, newMember])
-    console.log(data)
     reset()
+    // members.sort((a, b) => {
+    //   if (a.memberName > b.memberName) {
+    //     return 1
+    //   }
+    //   if (a.memberName < b.memberName) {
+    //     return -1
+    //   }
+    //   return 0
+    // })
   }
 
   const filledInputs = watch('memberName')
   const isSubmitDisabled = !filledInputs
 
-  console.log(members)
   return (
     <RegisterContainer>
       <form onSubmit={handleSubmit(handleCreateNewMember)} action="">
@@ -58,6 +74,27 @@ export function MemberRegister() {
           </SubmitButton>
         </FormContainer>
       </form>
+      <MembersListContainer>
+        <h1>Lista de membros</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Número</th>
+            </tr>
+          </thead>
+          <tbody>
+            {members.map((member) => {
+              return (
+                <tr key={member.memberId}>
+                  <td>{member.memberName}</td>
+                  <td>{member.memberNumber}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </MembersListContainer>
     </RegisterContainer>
   )
 }

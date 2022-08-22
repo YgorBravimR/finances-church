@@ -4,9 +4,11 @@ import { RegisterLayoutContainer } from './styles'
 
 export function RegisterLayout() {
   return (
-    <RegisterLayoutContainer>
-      <RegisterHeader />
-      <Outlet />
-    </RegisterLayoutContainer>
+    <div>
+      <RegisterLayoutContainer>
+        <RegisterHeader />
+        <Outlet />
+      </RegisterLayoutContainer>
+    </div>
   )
 }

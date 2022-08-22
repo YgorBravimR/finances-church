@@ -1,17 +1,12 @@
 // import { defineConfig } from 'vite'
 import styled from 'styled-components'
 
-export const RegisterContainer = styled.main``
+export const IncomeRegisterContainer = styled.main``
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  & label {
-    font-size: 1.3rem;
-    font-family: 'Poppins', sans-serif;
-  }
 
   input,
   select {
