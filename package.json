@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src --ext .tsx,.ts",
+    "lint:fix": "eslint src --ext .tsx,.ts --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -15,12 +17,10 @@
     "@mui/material": "^5.10.1",
     "@mui/styled-engine-sc": "^5.10.1",
     "date-fns": "^2.29.1",
-    "editorconfig": "^0.15.3",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.34.2",
-    "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.3.0",
     "style": "^0.0.3",
     "styled-components": "^5.3.5"

@@ -32,6 +32,8 @@ export function MemberRegister() {
 
   const [open, setOpen] = useState<boolean>(false)
 
+  const [members, setMembers] = useState<newMemberForm[]>([])
+
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string,
@@ -42,8 +44,6 @@ export function MemberRegister() {
 
     setOpen(false)
   }
-
-  const [members, setMembers] = useState<newMemberForm[]>([])
 
   function handleCreateNewMember(data: newMemberForm) {
     const id = String(new Date().getTime())
