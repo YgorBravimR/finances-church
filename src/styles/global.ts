@@ -15,26 +15,17 @@ export const GlobalStyles = createGlobalStyle`
     }
 
   body {
-    background-image: url(${img});
+    /* background-image: url(${img});
     background-size: cover;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center; */
+    background-color:#cfd0c7;
     color: ${(props) => props.theme['adnv-green-1']};
-    font-size: 0.875rem;
+    font-weight:bold;
+    font-size: 1rem;
+    line-height:1.8rem;
     -webkit-font-smoothing: antialiased;
     margin: auto;
-    max-width: 38rem;
-
-    label {
-    font-weight: bold;
-    font-size: 1.4rem;
-    font-family: 'Poppins', sans-serif;
-    }
-  }
-
-  body, input, textarea, button, select {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
+    max-width: 72rem
   }
 `

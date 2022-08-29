@@ -2,10 +2,20 @@ import {
   FormContainer,
   MembersListContainer,
   RegisterContainer,
-  SubmitButton,
 } from './styles'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import * as React from 'react'
+import {
+  InputLabel,
+  FormControl,
+  TextField,
+  Button,
+  InputAdornment,
+  OutlinedInput,
+  Alert,
+  Snackbar,
+} from '@mui/material'
 
 interface newMemberForm {
   memberId: string
@@ -20,7 +30,20 @@ export function MemberRegister() {
     },
   })
 
+  const [open, setOpen] = useState<boolean>(false)
+
   const [members, setMembers] = useState<newMemberForm[]>([])
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
 
   function handleCreateNewMember(data: newMemberForm) {
     const id = String(new Date().getTime())
@@ -32,16 +55,8 @@ export function MemberRegister() {
     }
 
     setMembers((state) => [...state, newMember])
+    setOpen(true)
     reset()
-    // members.sort((a, b) => {
-    //   if (a.memberName > b.memberName) {
-    //     return 1
-    //   }
-    //   if (a.memberName < b.memberName) {
-    //     return -1
-    //   }
-    //   return 0
-    // })
   }
 
   const filledInputs = watch('memberName')
@@ -52,26 +67,43 @@ export function MemberRegister() {
       <form onSubmit={handleSubmit(handleCreateNewMember)} action="">
         <FormContainer>
           <div>
-            <label htmlFor="personName">Nome</label>
-            <input
-              type="text"
-              id="memberName"
-              {...register('memberName')}
-              placeholder="Digite o nome"
-            />
+            <InputLabel htmlFor="memberName">Nome</InputLabel>
+            <FormControl fullWidth>
+              <TextField
+                type="text"
+                id="memberName"
+                {...register('memberName')}
+                placeholder="Paulo de Tarso"
+              />
+            </FormControl>
           </div>
-          <div>
-            <label htmlFor="memberNumber">Número</label>
-            <input
-              type="number"
+          <InputLabel htmlFor="memberNumber">Número</InputLabel>
+          <FormControl fullWidth>
+            <OutlinedInput
               id="memberNumber"
-              placeholder="(00) 00000-0000"
+              startAdornment={
+                <InputAdornment position="start">+55 </InputAdornment>
+              }
               {...register('memberNumber')}
+              placeholder="(00) 00000-0000"
             />
-          </div>
-          <SubmitButton type="submit" disabled={isSubmitDisabled}>
+          </FormControl>
+          <Button
+            onClick={handleSubmit(handleCreateNewMember)}
+            variant="contained"
+            disabled={isSubmitDisabled}
+          >
             Enviar
-          </SubmitButton>
+          </Button>
+          <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              sx={{ width: '100%' }}
+            >
+              Novo membro adicionado com sucesso!
+            </Alert>
+          </Snackbar>
         </FormContainer>
       </form>
       <MembersListContainer>
